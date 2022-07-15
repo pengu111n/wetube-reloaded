@@ -29,3 +29,19 @@ function(req, res, next) next => 다음함수 호출
 예를 들어 app.get("/", a, b) a함수에 next()가 있으면 다음 함수인 b의 함수를 실행시킴
 
 app.use() 모든 route에서 실행함 'global middleware' 대신 순서가 중요하다.
+
+## 3일차
+
+morgan이란 외부 middleware로써 nodeJS용 request middleware 전에 만들었던 logger같은 기능 = dev, combine = 시간 method http 브라우져 os등
+common short tiny 등등
+morgan("dev") import한후 이런식으로 쓰임
+
+보통 우리가 사용하는 웹사이트들처럼 사용하기 위한것이 router라고 생각하면 될거같다. 라우터는 url을 그룹화하는 방법이다
+default export 와 export의 차이 default export는 하나를 정해서 export해서 import할때 이름을 마음대로 정해도 되지만
+함수 앞에 export를 붙이게 되면 있는 이름 그대로 import를 해야한다.
+
+var로 선언한 변수와 함수 선언시 호이스팅이 일어난다. var로 선언한 변수의 경우 호이스팅 시 undefined로 변수를 초기화한다.
+호이스팅이란 함수 안에 있는 선언들을 모두 끌어올려서 해당 함수 유효 범위의 최상단에 선언하는 것을 말한다.
+호이스팅이란, 인터프리터가 변수와 함수의 메모리 공간을 선언 전에 미리 할당하는 것을 의미합니다.
+인터프리터란 코드를 한 줄씩 읽어 내려가며 실행하는 프로그램.대표적으로 파이썬,JS.
+컴파일러와는 대조적 -> 컴파일이란 어떤 언어의 코드 전체를 다른 언어로 바꿔주는 과정이다. 그리고 이것을 자동으로 수행해주는 소프트웨어를 컴파일러라고 한다.
