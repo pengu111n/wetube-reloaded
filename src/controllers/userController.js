@@ -145,6 +145,7 @@ export const logout = (req, res) => {
 export const getEdit = (req, res) => {
   return res.render("edit-profile", { pageTitle: "Editprofile" });
 };
+
 export const postEdit = async (req, res) => {
   const {
     session: {
@@ -154,6 +155,7 @@ export const postEdit = async (req, res) => {
     file,
   } = req;
 
+  console.log(file);
   const user = await User.findById(_id);
   let existEmail = await User.findOne({ email });
   let existUsername = await User.findOne({ username });
@@ -164,10 +166,11 @@ export const postEdit = async (req, res) => {
       errorMessage: "already exists email/username",
     });
   }
+  const isHeroku = process.env.NODE_ENV === "production";
   const updatedUser = await User.findByIdAndUpdate(
     _id,
     {
-      avatarUrl: file ? file.path : avatarUrl,
+      avatarUrl: file ? (isHeroku ? file.location : file.path) : avatarUrl,
       name,
       email,
       username,

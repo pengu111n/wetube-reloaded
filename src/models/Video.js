@@ -25,7 +25,9 @@ videoSchema.static("formatHashtags", function (hashtags) {
 });
 
 videoSchema.static("urlFormat", function (url) {
-  return url.replace(/\\/g, "/");
+  if (url) {
+    return url.replace(/\\/g, "/");
+  }
 });
 
 const movieModel = mongoose.model("Video", videoSchema);

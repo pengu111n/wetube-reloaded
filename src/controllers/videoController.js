@@ -1,4 +1,3 @@
-import { async } from "regenerator-runtime";
 import User from "../models/User";
 import Video from "../models/Video";
 import Comment from "../models/Comment";
@@ -80,14 +79,14 @@ export const postUpload = async (req, res) => {
   } = req.session;
   const { video, thumb } = req.files;
   const { title, description, hashtags } = req.body;
-
+  const isHeroku = process.env.NODE_ENV === "production";
   try {
     const newVideo = await Video.create({
       title,
       description,
       hashtags: Video.formatHashtags(hashtags),
-      fileUrl: video[0].path,
-      thumbUrl: Video.urlFormat(thumb[0].path),
+      fileUrl: isHeroku ? video[0].location : video[0].path,
+      thumbUrl: Video.urlFormat(isHeroku ? thumb[0].location : thumb[0].path),
       owner: _id,
     });
     const user = await User.findById(_id);
@@ -95,6 +94,8 @@ export const postUpload = async (req, res) => {
     user.save();
     return res.redirect("/");
   } catch (error) {
+    console.log(error);
+    console.log(thumb[0].path);
     return res.status(400).render("upload", {
       pageTitle: "Upload Video",
       errorMessage: error._message,
