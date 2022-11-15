@@ -39,9 +39,11 @@ export const postJoin = async (req, res) => {
     });
   }
 };
+
 export const getLogin = (req, res) => {
   res.render("login", { pageTitle: "Login" });
 };
+
 export const postLogin = async (req, res) => {
   const { username, password } = req.body;
   const pageTitle = "Login";
@@ -104,6 +106,7 @@ export const finishGithubLogin = async (req, res) => {
       })
     ).json();
     console.log(userData);
+
     const emailData = await (
       await fetch(`${apiURL}/user/emails`, {
         headers: {
@@ -111,6 +114,7 @@ export const finishGithubLogin = async (req, res) => {
         },
       })
     ).json();
+    
     const emailObj = emailData.find(
       (email) => email.primary === true && email.verified === true
     );

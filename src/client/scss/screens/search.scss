@@ -1,12 +1,14 @@
 .search__form {
-  margin-bottom: 60px;
+  margin-left: 250px;
   display: flex;
-  position: relative;
+  justify-content: center;
   align-items: center;
+  max-width: 100%;
+  width: 80%;
   input {
     all: unset;
-    padding: 15px 20px;
-    border-radius: 5px;
+    padding: 11px 15px !important; 
+    border-radius: 40px 0px 0px 40px !important;
     border: 1px solid rgba(255, 255, 255, 0.2);
     background-color: black;
     margin-bottom: 5px;
@@ -16,13 +18,23 @@
   }
   button {
     all: unset;
-  }
-  button {
-    position: absolute;
-    right: 15px;
+    max-height: 43px;
+    height: 43px;
+    width: 60px;
     font-size: 18px;
     background-color: rgba(0, 0, 0, 0);
     text-align: center;
     cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0px 40px 40px 0px;
+    margin-bottom: 5px;
   }
+}
+
+.search__div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width:62%;
+  
 }
