@@ -10,6 +10,7 @@
 @import "./components/forms.scss";
 @import "./components/social-login.scss";
 @import "./components/video-player.scss";
+@import "./components/nav.scss";
 
 // Screens
 
@@ -35,8 +36,8 @@ body {
 main {
   max-width: 1200px;
   width: 100%;
-  margin: 0 auto;
-  margin-top: 50px;
+  margin: 0 290px;
+  margin-top: 100px;
 }
 
 @keyframes goAway {
